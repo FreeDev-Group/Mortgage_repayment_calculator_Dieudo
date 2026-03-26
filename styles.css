@@ -1,0 +1,451 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: hsl(202, 86%, 94%);
+  --white: hsl(0, 0%, 100%);
+  --slate-100: hsl(202, 86%, 94%);
+  --slate-300: hsl(203, 41%, 72%);
+  --slate-500: hsl(200, 26%, 54%);
+  --slate-700: hsl(200, 24%, 40%);
+  --slate-900: hsl(202, 55%, 16%);
+  --lime: hsl(61, 70%, 52%);
+  --lime-200: hsl(61, 70%, 88%);
+  --red: hsl(4, 69%, 50%);
+  --border: hsl(200, 26%, 54%);
+  --border-light: hsl(203, 41%, 72%);
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+  --radius: 24px;
+  --transition: 0.2s ease;
+}
+
+
+html {
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: var(--bg);
+  color: var(--slate-900);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+
+.container {
+  width: min(100%, 1000px);
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr;
+}
+
+
+
+.calculator {
+  padding: 36px 32px;
+  background: var(--white);
+}
+
+.calculator-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.calculator-header h1 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--slate-900);
+}
+
+.clear-btn {
+  border: 0;
+  background: transparent;
+  color: var(--slate-500);
+  font: inherit;
+  font-size: 0.95rem;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color var(--transition), opacity var(--transition);
+}
+
+.clear-btn:hover {
+  color: var(--slate-900);
+}
+
+.clear-btn:focus-visible {
+  outline: 3px solid var(--lime);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+
+
+#mortgage-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--slate-700);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-wrapper input {
+  width: 100%;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  padding-left: 3rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--slate-900);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
+}
+
+.input-wrapper input::placeholder {
+  color: hsl(200, 18%, 65%);
+  font-weight: 700;
+}
+
+.input-wrapper input:hover {
+  border-color: var(--slate-700);
+}
+
+.input-wrapper input:focus {
+  border-color: var(--lime);
+  box-shadow: 0 0 0 3px rgba(215, 218, 47, 0.18);
+}
+
+.prefix,
+.suffix {
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  display: grid;
+  place-items: center;
+  min-width: 3rem;
+  padding-inline: 0.85rem;
+  background: hsl(202, 86%, 96%);
+  color: var(--slate-700);
+  font-weight: 700;
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+.prefix {
+  left: 1px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 1px solid var(--border-light);
+}
+
+.suffix {
+  right: 1px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 1px solid var(--border-light);
+}
+
+.input-wrapper input:focus + .suffix,
+.input-wrapper input:focus ~ .suffix {
+  background: var(--lime);
+  color: var(--slate-900);
+}
+
+.input-wrapper input:focus ~ .prefix {
+  background: var(--lime);
+  color: var(--slate-900);
+}
+
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 0.95rem 1rem;
+  cursor: pointer;
+  transition: border-color var(--transition), background-color var(--transition), box-shadow var(--transition);
+  font-weight: 700;
+  color: var(--slate-900);
+}
+
+.radio-option:hover {
+  border-color: var(--lime);
+}
+
+.radio-option input {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  margin: 0;
+  position: relative;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.radio-option input::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform var(--transition);
+  background: var(--lime);
+}
+
+.radio-option input:checked {
+  border-color: var(--lime);
+}
+
+.radio-option input:checked::before {
+  transform: scale(1);
+}
+
+.radio-option:has(input:checked) {
+  background: var(--lime-200);
+  border-color: var(--lime);
+}
+
+.radio-option:focus-within {
+  box-shadow: 0 0 0 3px rgba(215, 218, 47, 0.18);
+  border-color: var(--lime);
+}
+
+
+.calculate-btn {
+  margin-top: 6px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--lime);
+  color: var(--slate-900);
+  font: inherit;
+  font-weight: 700;
+  padding: 1rem 1.3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition), background-color var(--transition);
+  width: fit-content;
+  min-width: 280px;
+  box-shadow: 0 10px 25px rgba(215, 218, 47, 0.35);
+}
+
+.calculate-btn:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.calculate-btn:focus-visible {
+  outline: 3px solid var(--slate-900);
+  outline-offset: 4px;
+}
+
+.results {
+  background: var(--slate-900);
+  color: var(--white);
+  padding: 38px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.results-empty,
+.results-filled {
+  width: 100%;
+}
+
+.results-empty {
+  text-align: center;
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+.results-empty h2,
+.results-filled h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.results-empty p,
+.results-filled .description {
+  color: var(--slate-300);
+  line-height: 1.6;
+  font-size: 0.96rem;
+}
+
+.results-filled {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.result-box {
+  background: hsl(202, 55%, 12%);
+  border-top: 4px solid var(--lime);
+  border-radius: 14px;
+  padding: 26px 22px;
+}
+
+.result-box p,
+.result-total p {
+  color: var(--slate-300);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.result-box h3 {
+  color: var(--lime);
+  font-size: clamp(2.3rem, 4vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+}
+
+.result-total {
+  padding-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.result-total h4 {
+  color: var(--white);
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+
+.form-group.error label {
+  color: var(--red);
+}
+
+.form-group.error .input-wrapper input {
+  border-color: var(--red);
+}
+
+.form-group.error .prefix,
+.form-group.error .suffix {
+  background: var(--red);
+  color: var(--white);
+  border-color: var(--red);
+}
+
+.error-message {
+  min-height: 18px;
+  font-size: 0.82rem;
+  color: var(--red);
+  font-weight: 600;
+}
+
+
+
+button:focus-visible,
+input:focus-visible,
+.radio-option:focus-within {
+  outline: none;
+}
+
+
+
+
+
+  .container {
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+  }
+
+  .calculator,
+  .results {
+    padding: 24px 18px;
+  }
+
+  .calculator-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .calculate-btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .result-box h3 {
+    font-size: 2.1rem;
+  }
+}
