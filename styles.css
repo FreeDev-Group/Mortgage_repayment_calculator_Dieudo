@@ -23,7 +23,6 @@
   --transition: 0.2s ease;
 }
 
-
 html {
   font-size: 16px;
 }
@@ -46,13 +45,12 @@ body {
   overflow: hidden;
   box-shadow: var(--shadow);
   display: grid;
-  grid-template-columns: 1.2fr 0.9fr;
+  grid-template-columns: 1.1fr 0.9fr;
 }
 
 
-
 .calculator {
-  padding: 36px 32px;
+  padding: 38px 32px;
   background: var(--white);
 }
 
@@ -91,7 +89,6 @@ body {
   outline-offset: 4px;
   border-radius: 6px;
 }
-
 
 
 #mortgage-form {
@@ -193,8 +190,6 @@ body {
   color: var(--slate-900);
 }
 
-
-
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -204,7 +199,6 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-
 
 
 .radio-group {
@@ -380,11 +374,8 @@ input[type="number"] {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
-
-
-
 
 .form-group.error label {
   color: var(--red);
@@ -408,17 +399,28 @@ input[type="number"] {
   font-weight: 600;
 }
 
-
-
 button:focus-visible,
 input:focus-visible,
 .radio-option:focus-within {
   outline: none;
 }
 
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
 
+  .results {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
 
-
+@media (max-width: 640px) {
+  body {
+    padding: 0;
+    place-items: start;
+    background: var(--bg);
+  }
 
   .container {
     width: 100%;
