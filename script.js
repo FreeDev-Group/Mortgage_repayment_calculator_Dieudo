@@ -86,3 +86,26 @@ function validateForm() {
   return isValid;
 }
 
+function calculateMortgage(amount, term, rate, type) {
+  const monthlyRate = rate / 100 / 12;
+  const months = term * 12;
+
+  let monthly = 0;
+  let total = 0;
+
+  if (type === "repayment") {
+    // formule classique
+    monthly =
+      (amount * monthlyRate * Math.pow(1 + monthlyRate, months)) /
+      (Math.pow(1 + monthlyRate, months) - 1);
+
+    total = monthly * months;
+  } else {
+    // interest only
+    monthly = amount * monthlyRate;
+    total = monthly * months + amount;
+  }
+
+  return { monthly, total };
+}
+
