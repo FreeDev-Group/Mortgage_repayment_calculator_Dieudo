@@ -109,3 +109,39 @@ function calculateMortgage(amount, term, rate, type) {
   return { monthly, total };
 }
 
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  if (!validateForm()) return;
+
+  const amount = parseFloat(amountInput.value);
+  const term = parseFloat(termInput.value);
+  const rate = parseFloat(rateInput.value);
+  const type = getSelectedType();
+
+  const result = calculateMortgage(amount, term, rate, type);
+
+  // Affichage
+  monthlyEl.textContent = formatCurrency(result.monthly);
+  totalEl.textContent = formatCurrency(result.total);
+
+  emptyState.classList.add("hidden");
+  resultsBox.classList.remove("hidden");
+});
+
+
+clearBtn.addEventListener("click", () => {
+  form.reset();
+
+  document.querySelectorAll(".form-group").forEach((group) => {
+    group.classList.remove("error");
+    const msg = group.querySelector(".error-message");
+    if (msg) msg.textContent = "";
+  });
+
+  resultsBox.classList.add("hidden");
+  emptyState.classList.remove("hidden");
+
+  monthlyEl.textContent = "£0.00";
+  totalEl.textContent = "£0.00";
+});
